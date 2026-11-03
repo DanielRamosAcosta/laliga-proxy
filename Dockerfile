@@ -8,7 +8,7 @@ COPY src ./src
 COPY tests ./tests
 RUN cargo build --release --locked --bin laliga-proxy
 
-FROM alpine:3.21
+FROM alpine:3.24
 RUN apk add --no-cache ca-certificates \
     && adduser -D -u 10001 app
 COPY --from=builder /src/target/release/laliga-proxy /usr/local/bin/laliga-proxy
